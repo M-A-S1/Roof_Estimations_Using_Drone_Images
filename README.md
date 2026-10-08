@@ -3,12 +3,14 @@
 **Drone photos in → roof measurement report out.** Facet areas, pitch, and ridge, hip, valley, eave and rake lengths, generated automatically from a 3D point cloud.
 
 <p align="center">
-  <img src="images/pipeline.gif" width="560" alt="Animation: drone point cloud, building isolated, roof facets detected, edges measured">
+  <img src="images/real_pipeline.gif" width="560" alt="Animation on a real building: LiDAR point cloud, ground removed, roof facets detected, edges measured">
 </p>
 
 <p align="center">
-  <img src="images/pipeline.png" alt="Pipeline stages: drone point cloud, building isolated, roof facets detected, edges measured">
+  <img src="images/real_pipeline.png" alt="Pipeline stages on a real building: LiDAR point cloud with trees, ground removed, roof facets detected, edges measured">
 </p>
+
+<p align="center"><sub>Real apartment building in Eden Prairie, Minnesota, measured from public USGS LiDAR. Trees and neighbouring ground are in the raw data; the roof is extracted and measured automatically in under 3 seconds.</sub></p>
 
 ## Who this is for
 
@@ -28,20 +30,21 @@ Every report contains:
 | **Edges** | Ridge, hip, valley, eave and rake lengths in metres and feet |
 | **Files** | Two-page PDF report, JSON and CSV for your estimating software, colour-coded 3D point cloud |
 
-### Sample report
+### Sample report: real building
 
 <p>
-  <img src="images/cross-gable_report-1.png" width="49%" alt="Report page 1: totals, plan diagram with labelled facets, edge lengths">
-  <img src="images/cross-gable_report-2.png" width="49%" alt="Report page 2: facet table and 3D view">
+  <img src="images/real_report-1.png" width="49%" alt="Report page 1 for a real building: totals, plan diagram with labelled facets, edge lengths">
+  <img src="images/real_report-2.png" width="49%" alt="Report page 2 for a real building: facet table and 3D view">
 </p>
 
 Full reports:
 
-| Roof | Report | Data |
-|---|---|---|
-| Cross-gable (with valleys) | [PDF](examples/cross-gable/roof_report.pdf) | [JSON](examples/cross-gable/roof.json) · [CSV](examples/cross-gable/facets.csv) |
-| Hip | [PDF](examples/hip/roof_report.pdf) | [JSON](examples/hip/roof.json) · [CSV](examples/hip/facets.csv) |
-| Gable | [PDF](examples/gable/roof_report.pdf) | [JSON](examples/gable/roof.json) · [CSV](examples/gable/facets.csv) |
+| Roof | Source | Report | Data |
+|---|---|---|---|
+| **Apartment building, Eden Prairie, MN** | **Real: USGS LiDAR** | [PDF](examples/real-lidar-eden-prairie/roof_report.pdf) | [JSON](examples/real-lidar-eden-prairie/roof.json) · [CSV](examples/real-lidar-eden-prairie/facets.csv) |
+| Cross-gable (with valleys) | Simulated | [PDF](examples/cross-gable/roof_report.pdf) | [JSON](examples/cross-gable/roof.json) · [CSV](examples/cross-gable/facets.csv) |
+| Hip | Simulated | [PDF](examples/hip/roof_report.pdf) | [JSON](examples/hip/roof.json) · [CSV](examples/hip/facets.csv) |
+| Gable | Simulated | [PDF](examples/gable/roof_report.pdf) | [JSON](examples/gable/roof.json) · [CSV](examples/gable/facets.csv) |
 
 ### Plan diagrams
 
@@ -54,6 +57,26 @@ Full reports:
 Edge colours: 🟥 ridge · 🟧 hip · 🟦 valley · 🟩 eave · 🟪 rake
 
 ## Accuracy
+
+### Real building
+
+The Eden Prairie building above was measured from public USGS 3DEP LiDAR (2022, about 85 points/m²):
+
+| Check | Result |
+|---|---|
+| Roof area | 464 m² (49.95 squares), 10 facets |
+| Pitch | All six main slopes at 4.0/12 (18.3–18.4°) |
+| Plane fit | 1.1–1.5 cm RMS on every main facet |
+| Plan area vs. mapped footprint | 418 m² vs. 410 m² in OpenStreetMap (+2 %, consistent with eave overhang) |
+| Repeatability | An identical building on the same street: ridge 26.84 m vs. 26.61 m, main slopes 116 m² vs. 114 m² |
+
+No tape measurements were available for this building, so these are consistency checks, not ground-truth error.
+
+### Simulated roofs with known answers
+
+<p align="center">
+  <img src="images/pipeline.png" alt="Pipeline stages on a simulated cross-gable house: point cloud, building isolated, roof facets detected, edges measured">
+</p>
 
 Tested on simulated drone scans of houses with exactly known dimensions. Each scene includes walls, sloped ground, a tree beside the house, sensor noise, and real-world (UTM) coordinates.
 
@@ -71,7 +94,7 @@ Lengths are measured / true, in metres.
 - Pitch was within 0.2° on every facet.
 - Each roof takes 2–3 seconds to process.
 
-These results come from simulated scans. Validation on real flights is under way, and results will be added here.
+Results from real drone flights with tape-measured ground truth will be added here.
 
 ## How it works
 
