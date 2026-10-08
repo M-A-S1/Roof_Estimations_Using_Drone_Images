@@ -92,7 +92,7 @@ These results come from simulated scans. Validation on real flights is under way
 
 ## About
 
-Built by **Muhammad Ali**, a computer vision engineer with 7+ years producing 3D models and ground truth from drone imagery for roofing, solar and telecom inspection platforms. MSc Electrical Engineering (AI & Autonomous Systems); PhD researcher in robotic perception.
+Built by **Muhammad Ali**, a computer vision engineer with 7+ years of experience producing 3D models and ground truth from drone imagery for roofing, solar and telecom inspection platforms. MSc Electrical Engineering (AI & Autonomous Systems); Researcher in robotic perception.
 
 I also build custom pipelines: photogrammetry and point-cloud processing, digital twins, and detection and segmentation models deployed to the cloud or edge devices.
 
