@@ -1,0 +1,3 @@
+id,area_m2,area_ft2,plan_area_m2,tilt_deg,pitch,azimuth_deg,facing,points,fit_rms_m
+F1,70.31,756.8,62.89,26.6,6.0/12,337.0,NW,12869,0.014
+F2,70.51,758.9,63.07,26.6,6.0/12,157.0,SE,12837,0.014
